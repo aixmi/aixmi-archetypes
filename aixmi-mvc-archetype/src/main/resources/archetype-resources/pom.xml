@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<packaging>pom</packaging>
+	<version>${version}</version>
+	<name>${artifactId}</name>
+
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<spring-boot.version>2.4.0</spring-boot.version>
+		<aixmi.framework.version>3.1.0</aixmi.framework.version>
+		<aixmi.spring-boot.version>2.4.0</aixmi.spring-boot.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- aixmi Framework-->
+			<dependency>
+				<groupId>io.github.aixmi</groupId>
+				<artifactId>aixmi-framework-dependencies</artifactId>
+				<version>${aixmi.framework.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--aixmi Framework End-->
+			<!--			aixmi spring boot start-->
+			<dependency>
+				<groupId>io.github.aixmi</groupId>
+				<artifactId>aixmi-spring-boot-dependencies</artifactId>
+				<version>${aixmi.spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--			aixmi spring boot end-->
+
+			<!--Project modules-->
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${rootArtifactId}-api</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${rootArtifactId}-model</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${rootArtifactId}-schedule</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${rootArtifactId}-service</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${rootArtifactId}-web</artifactId>
+				<version>${version}</version>
+			</dependency>
+			<!--Project modules End-->
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
